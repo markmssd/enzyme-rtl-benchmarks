@@ -1,0 +1,38 @@
+name: Benchmark Enzyme VS React Testing Library
+
+on:
+  push:
+    branches:
+      - master
+
+jobs:
+  enzyme-rtl-benchmarks:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v2
+      - run: yarn install
+
+      - name: "Test with 1 element"
+        run: yarn test
+        env:
+          FORM_EL_COUNT: 1
+
+      - name: "Test with 100 element"
+        run: yarn test
+        env:
+          FORM_EL_COUNT: 100
+
+      - name: "Test with 1000 element"
+        run: yarn test
+        env:
+          FORM_EL_COUNT: 1000
+
+      - name: "Test with 10000 element"
+        run: yarn test
+        env:
+          FORM_EL_COUNT: 10000
+
+      - name: "Test with 100000 element"
+        run: yarn test
+        env:
+          FORM_EL_COUNT: 100000
