@@ -6,7 +6,7 @@ import Enzyme from 'enzyme';
 import Adapter from '@wojtekmaj/enzyme-adapter-react-17';
 import '@testing-library/jest-dom';
 
-export const formElCount = 1000;
+export const formElCount = 100;
 
 Enzyme.configure({ adapter: new Adapter() });
 
