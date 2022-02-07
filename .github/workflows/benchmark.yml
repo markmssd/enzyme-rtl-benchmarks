@@ -17,22 +17,17 @@ jobs:
         env:
           FORM_EL_COUNT: 1
 
-      - name: "Test with 100 element"
+      - name: "Test with 100 elements"
         run: yarn test
         env:
           FORM_EL_COUNT: 100
 
-      - name: "Test with 1000 element"
+      - name: "Test with 1000 elements"
         run: yarn test
         env:
           FORM_EL_COUNT: 1000
 
-      - name: "Test with 10000 element"
+      - name: "Test with 10000 elements"
         run: yarn test
         env:
           FORM_EL_COUNT: 10000
-
-      - name: "Test with 100000 element"
-        run: yarn test
-        env:
-          FORM_EL_COUNT: 100000
