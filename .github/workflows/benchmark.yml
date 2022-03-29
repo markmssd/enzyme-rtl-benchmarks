@@ -4,6 +4,20 @@ on:
   push:
     branches:
       - master
+  workflow_dispatch:
+    inputs:
+      forceBuildAutoVersionedServices:
+        description: 'Build all auto-versioned services'
+        required: false
+        type: boolean
+      targets:
+        description: 'Services to build (comma delimited list)'
+        required: false
+        type: string
+
+env:
+  MANUAL_FORCE_BUILD: ${{ github.event.inputs.forceBuildAutoVersionedServices }}
+  MANUAL_TARGETS: ${{ github.event.inputs.targets }}
 
 jobs:
   enzyme-rtl-benchmarks:
@@ -13,6 +27,9 @@ jobs:
         elements: [1, 100, 1000, 10000]
     steps:
       - uses: actions/checkout@v2
+      - run: |
+        echo "MANUAL_FORCE_BUILD=${MANUAL_FORCE_BUILD}"
+        echo "MANUAL_TARGETS=${MANUAL_TARGETS}"
       - run: yarn install
 
       - name: "Test with ${{ matrix.elements }} elements"
