@@ -28,8 +28,8 @@ jobs:
     steps:
       - uses: actions/checkout@v2
       - run: |
-        echo "MANUAL_FORCE_BUILD=${MANUAL_FORCE_BUILD}"
-        echo "MANUAL_TARGETS=${MANUAL_TARGETS}"
+          echo "MANUAL_FORCE_BUILD=${MANUAL_FORCE_BUILD}"
+          echo "MANUAL_TARGETS=${MANUAL_TARGETS}"
       - run: yarn install
 
       - name: "Test with ${{ matrix.elements }} elements"
