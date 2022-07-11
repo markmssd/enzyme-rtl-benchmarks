@@ -1,0 +1,20 @@
+###########################################################################################
+# This workflow listens on completed Dashboard workflow and sends a Slack notification
+# to channel #unity-dashboard-alerts if it failed
+###########################################################################################
+name: CI Notify Dashboard failure for master
+
+on:
+  workflow_run:
+    workflows: [Benchmark Enzyme VS React Testing Library]
+    types: [completed]
+    branches: [master]
+
+jobs:
+  notify-slack:
+    name: Notify Slack on failure
+    runs-on: ubuntu-latest
+    if: ${{ github.event.workflow_run.conclusion == 'failure' }}
+    steps:
+      - run: echo https://github.com/${{github.repository}}/actions/runs/${{github.event.workflow_run.run_id}}
+      - run: echo https://github.com/${{github.repository}}/actions/runs/${{github.event.workflow.run_id}}

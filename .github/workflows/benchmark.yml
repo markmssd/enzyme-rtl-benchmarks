@@ -26,6 +26,7 @@ jobs:
       matrix:
         elements: [1, 100, 1000, 10000]
     steps:
+      - run: exit 1
       - uses: actions/checkout@v2
       - run: |
           echo "MANUAL_FORCE_BUILD=${MANUAL_FORCE_BUILD}"
