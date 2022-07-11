@@ -16,11 +16,4 @@ jobs:
     runs-on: ubuntu-latest
     if: ${{ github.event.workflow_run.conclusion == 'failure' }}
     steps:
-      - run: echo https://github.com/${{github.repository}}/actions/runs/${{github.event.workflow_run.run_id}}
-      - run: echo https://github.com/${{github.repository}}/actions/runs/${{github.event.workflow.run_id}}
-      - run: echo ${TEST}
-        env:
-          TEST: ${{toJSON(github.event.workflow)}}
-      - run: echo ${TEST}
-        env:
-          TEST: ${{toJSON(github.event.workflow_run)}}
+      - run: echo ${{github.event.workflow_run.name}} - ${{github.event.workflow_run.html_url}}
